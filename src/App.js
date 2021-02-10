@@ -1,12 +1,20 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import './App.css';
+
+function Food({fav}){
+    console.log(fav)
+    return <h1>I like {fav}</h1>;
+}
 
 function App() {
 
   return (
-    <div className="App">
-      어쩌구 저쩌구aa
+    <div>
+          <h1>hellowaaa</h1>
+          <Food fav="kimchi"/>
+          <Food fav="ramen"/>
+          <Food fav="samgiopsal"/>
+          <Food fav="chukumi"/>
     </div>
   );
 }
