@@ -1,9 +1,42 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import PropTypes from "prop-types";
 
-function Food({fav}){
-    console.log(fav)
-    return <h1>I like {fav}</h1>;
+
+const foodILike = [
+    {
+        id: 3,
+        name: "Kimchi",
+        image: "img/kimchi.png"
+    },
+    {
+        id: 4,
+        name: "Sam",
+        image: "img/Sam.hpg",
+        rating: 3.6
+    },
+    {
+        id: 5,
+        name: "Bibim",
+        image: "img/Bibim.jpg",
+        rating: 3.7
+    },
+    {
+        id: 6,
+        name: "Don",
+        image: "img/Don.jpg",
+        rating: 3.8
+    },
+]
+function Food({name, picture, rating}){
+    return (<div><h1>I like {name}</h1>
+            <h4>{rating}/5.0</h4>
+        <img src={picture} alt={name} /></div>);
+}
+Food.propTypes = {
+    name: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    rating: PropTypes.number
 }
 function study({day, gita, explain}){
     return <h1>{day} {gita} {explain}</h1>;
@@ -13,12 +46,7 @@ function App() {
 
   return (
     <div>
-          <h1>hellowaaa</h1>
-          <Food fav="kimchi"/>
-          <Food fav="ramen"/>
-          <Food fav="samgiopsal"/>
-          <Food fav="chukumi"/>
-          <study day="0210" gita="https://ko.javascript.info/import-export#ref-4122" explain="as와 default, import와 export에 대한 설명이 된 사이트" />
+          {foodILike.map(menu => <Food key ={menu.id} name={menu.name} picture={menu.image} rating={menu.rating} />)}
     </div>
   );
 }
